@@ -1,0 +1,663 @@
+
+<!-- saved from url=(0107)https://pub.phyks.me/sdz/sdz/maitriser-les-tableaux-html-avec-javascript.html#Ajouterducontenudansuntableau -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Tutoriel : Maîtriser les tableaux HTML avec JavaScript</title>
+<link href="./Tutoriel _ Maîtriser les tableaux HTML avec JavaScript_files/sdz_main.css" type="text/css" rel="stylesheet" media="all">
+</head>
+        <body>
+<a href="http://www.siteduzero.com/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript" class="version_en_ligne">Version en ligne</a>
+<h1>Tutoriel : Maîtriser les tableaux HTML avec JavaScript</h1>
+<h2>Table des matières</h2><div class="table_des_matieres"><a href="https://pub.phyks.me/sdz/sdz/maitriser-les-tableaux-html-avec-javascript.html#MatriserlestableauxHTMLavecJavaScript">Maîtriser les tableaux HTML avec JavaScript</a><br><a href="https://pub.phyks.me/sdz/sdz/maitriser-les-tableaux-html-avec-javascript.html#Prsentation">Présentation</a><br><a href="https://pub.phyks.me/sdz/sdz/maitriser-les-tableaux-html-avec-javascript.html#Sedplacerdansuntableau">Se déplacer dans un tableau</a><br><a href="https://pub.phyks.me/sdz/sdz/maitriser-les-tableaux-html-avec-javascript.html#Ajouterducontenudansuntableau">Ajouter du contenu dans un tableau</a><br><a href="https://pub.phyks.me/sdz/sdz/maitriser-les-tableaux-html-avec-javascript.html#Supprimerducontenu">Supprimer du contenu</a><br><a href="https://pub.phyks.me/sdz/sdz/maitriser-les-tableaux-html-avec-javascript.html#Dplacerducontenu">Déplacer du contenu</a><br></div>
+<a name="MatriserlestableauxHTMLavecJavaScript"></a><h2>Maîtriser les tableaux HTML avec JavaScript</h2><div class="paginate-tuto">
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+<span class="next">Présentation</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="top">
+<div class="clear"></div> <div class="content">
+<p id="r-368190" data-claire-element-id="368190">Au cours de vos projets, vous serez sûrement amenés à développer, supprimer ou simplement lire le contenu d'un tableau HTML, surtout si vos structures, ou celles que vous devrez traiter, seront en tableaux HTML.<br> Ici, je vous présente une manière sûre d'y arriver.</p><div id="r-368192" data-claire-element-id="368192" data-claire-semantic="question"><p id="r-368191" data-claire-element-id="368191">Totalement sûre ?</p></div><p id="r-368193" data-claire-element-id="368193">Oui ! Totalement sûre, car les outils que nous allons utiliser sont issus du DOM level 1, c'est-à-dire l'ensemble des standards publiés par le W3C en 1998. Ils sont donc disponibles dans tous les navigateurs dès Internet Explorer 5 et Netscape 6.</p><p id="r-368194" data-claire-element-id="368194">Ce tutoriel demande des connaissances en JavaScript, et en particulier sur les objets.<br> Je vous invite donc à lire <a href="http://www.siteduzero.com/tutoriel-3-8158-tout-sur-le-javascript.html">ce tutoriel</a>. De plus, des connaissances préalables sur les DOM pourront vous être utiles. Enfin, et bien entendu, vous devez connaître les tableaux HTML. Néanmoins, on en reverra des éléments.</p><p id="r-368195" data-claire-element-id="368195">J'essaierai d'être le plus clair possible en expliquant les nouvelles notions. Pour vous aider à les assimiler, j'ai mis des exemples qui sont des applications directes, ainsi que des exercices pour aller plus loin où je vous mettrai du mieux que je peux sur la piste. Cependant, si vous ne comprenez pas, n'hésitez pas à me l'indiquer. Ces exercices sont primordiaux car ils vous entraînent également à la programmation.</p><p id="r-368196" data-claire-element-id="368196">Ainsi ce tutoriel ne s'adresse pas uniquement à ceux qui doivent traiter des tableaux HTML, mais aussi à tous ceux qui veulent progresser en JavaScript.</p><aside id="r-368198" data-claire-element-id="368198" data-claire-semantic="warning"><p id="r-368197" data-claire-element-id="368197">Pour éviter les confusions entre les tableaux du JavaScript et ceux du (x)HTML, j'appellerai les premiers « arrays » et les seconds « tableaux HTML ».</p></aside><p id="r-368199" data-claire-element-id="368199">Voici un exemple de ce que vous pourrez facilement faire : <a href="http://www.ninjasensei.fr/vonline.html">aperçu</a>. Mais en réalité, vous saurez faire bien plus.</p>
+</div><a name="Prsentation"></a><h2>Présentation</h2><div class="paginate-tuto">
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+<span class="next">Se déplacer dans un tableau</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="top">
+<div class="clear"></div> <div id="content" role="article">
+<p id="r-368200" data-claire-element-id="368200">Tout d'abord, je vais vous expliquer l'intérêt de maîtriser les tableaux par des objets JavaScript. En effet, peut-être avez-vous déjà eu recours pour cela à un mélange d'innerHTML et de RegEx (expressions régulières).</p><p id="r-368201" data-claire-element-id="368201">Cependant, cette méthode a ses limites. Tout simplement, elle est trop compliquée pour vous et trop longue pour votre ordinateur (c'est une règle d'or, n'abusez pas trop des RegEx : trop nombreuses, elles feront ralentir l'ordinateur de l'internaute et le site pourra devenir inutilisable !).</p><div id="r-368203" data-claire-element-id="368203" data-claire-semantic="question"><p id="r-368202" data-claire-element-id="368202">Comment ça ?? Il suffit d'être un peu débrouillard et le problème de complexité n'en est plus un !</p></div><p id="r-368204" data-claire-element-id="368204">Eh bien en fait non... Pour deux raisons :</p><ul id="r-368209" data-claire-element-id="368209"><li id="r-368206" data-claire-element-id="368206"><p id="r-368205" data-claire-element-id="368205">votre code va sûrement être trifouillé par d'autres personnes que vous, et figurez-vous que lire une RegEx quand on ne l'a pas écrite soi-même est une chose <strong>très</strong> compliquée !</p></li><li id="r-368208" data-claire-element-id="368208"><p id="r-368207" data-claire-element-id="368207">imaginez que vous réalisez un tableau dynamique, qui peut aussi contenir d'autres tableaux qui sont ajoutés par l'internaute ; de ce fait vous ne maîtrisez plus réellement son contenu. Là encore, vous pourrez vous débrouiller par de nombreuses RegEx, et ainsi passer de nombreuses heures à produire un code long, compliqué et fragile (fragile car une simple erreur va être difficile à retrouver !).</p></li></ul><p id="r-368210" data-claire-element-id="368210">Désormais, vous allez donc utiliser les méthodes suivantes (elles seront davantage détaillées dans la partie suivante) :</p><ul id="r-368231" data-claire-element-id="368231"><li id="r-368212" data-claire-element-id="368212"><p id="r-368211" data-claire-element-id="368211">objet.insertRow([index]) c'est-à-dire, ô ordinateur, dans ce tableau, insère une ligne s'il te plait, à cet endroit-là (le JavaScript est une langue plus abrégée que le français :lol: ) ;</p></li><li id="r-368214" data-claire-element-id="368214"><p id="r-368213" data-claire-element-id="368213">objet.deleteRow(), ou supprime la ligne ;</p></li><li id="r-368216" data-claire-element-id="368216"><p id="r-368215" data-claire-element-id="368215">objet.insertCell([index]), ou insère une colonne à cet endroit précis ;</p></li><li id="r-368218" data-claire-element-id="368218"><p id="r-368217" data-claire-element-id="368217">objet.deleteCell(), ou supprime une cellule ;</p></li><li id="r-368220" data-claire-element-id="368220"><p id="r-368219" data-claire-element-id="368219">objet.createTHead(), ou crée un haut de tableau ;</p></li><li id="r-368222" data-claire-element-id="368222"><p id="r-368221" data-claire-element-id="368221">objet.deleteTHead(), ou supprime le haut de tableau ;</p></li><li id="r-368224" data-claire-element-id="368224"><p id="r-368223" data-claire-element-id="368223">objet.createTFoot(), ou crée un bas de tableau ;</p></li><li id="r-368226" data-claire-element-id="368226"><p id="r-368225" data-claire-element-id="368225">objet.deleteTFoot(), ou supprime le bas de tableau ;</p></li><li id="r-368228" data-claire-element-id="368228"><p id="r-368227" data-claire-element-id="368227">objet.createCaption(), ou donne un titre au tableau ;</p></li><li id="r-368230" data-claire-element-id="368230"><p id="r-368229" data-claire-element-id="368229">objet.deleteCaption(), ou supprime le titre du tableau.</p></li></ul><p id="r-368232" data-claire-element-id="368232">Lorsque vous voyez un argument entre crochets, cela signifie qu'il est facultatif. Néanmoins tous les navigateurs ne respectent pas cela. Aussi, pour être au maximum compatible avec les différents navigateurs, vous devez toujours indiquer le paramètre de ces méthodes.</p><aside id="r-368234" data-claire-element-id="368234" data-claire-semantic="information"><p id="r-368233" data-claire-element-id="368233">Certains programmeurs maîtrisent également les tableaux avec d'autres méthodes du DOM. Mais je préconise les méthodes précédentes, car votre code sera plus lisible, plus léger et plus facile pour vous à concevoir.</p></aside>
+<aside class="aside-menu">
+<ul class="content-menu subchapter" role="navigation">
+<li class="tuto">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript">Maîtriser les tableaux HTML avec JavaScript</a>
+</li>
+<ul class="subchapter-parts">
+<li class="active">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+Présentation
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+Se déplacer dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+Ajouter du contenu dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+Supprimer du contenu
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/deplacer-du-contenu-1">
+Déplacer du contenu
+</a>
+</li>
+</ul>
+</ul>
+</aside>
+</div>
+<div id="content-bottom-menu"></div>
+<hr>
+<div class="paginate-tuto">
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+<span class="next">Se déplacer dans un tableau</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="bottom">
+<div class="clear"></div> <div class="adBan">
+<script type="text/javascript">
+    if (window.innerWidth >= 728)
+    {
+        document.write('<div id="div-gpt-ad-1350977194635-8" class="megaban"></div>');
+        googletag.cmd.push(function() {
+            googletag.display('div-gpt-ad-1350977194635-8');
+        });
+    }
+            else
+        {
+            document.write('<div id="div-gpt-ad-1350977284180-8" class="miniban"></div>');
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1350977284180-8');
+            });
+        }
+    </script><div id="div-gpt-ad-1350977194635-8" class="megaban"></div>
+</div>
+<div class="clear"></div><a name="Sedplacerdansuntableau"></a><h2>Se déplacer dans un tableau</h2><div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+<span class="arrow"></span>
+<span class="next">Présentation</span>
+</a>
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+<span class="next">Ajouter du contenu dans un tableau</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="top">
+<div class="clear"></div> <div id="content" role="article">
+<h2 id="r-comprendre-la-structure-d-un-tableau" data-claire-element-id="368249">Comprendre la structure d'un tableau</h2><p id="r-368236" data-claire-element-id="368236">Un tableau est un élément XML constitué de :</p><ul id="r-368247" data-claire-element-id="368247"><li id="r-368238" data-claire-element-id="368238"><p id="r-368237" data-claire-element-id="368237">sa structure principale (table) ;</p></li><li id="r-368240" data-claire-element-id="368240"><p id="r-368239" data-claire-element-id="368239">sa légende (caption), qui est facultative ;</p></li><li id="r-368242" data-claire-element-id="368242"><p id="r-368241" data-claire-element-id="368241">sa sous-structure (thead, tbody et tfoot), facultative également ;</p></li><li id="r-368244" data-claire-element-id="368244"><p id="r-368243" data-claire-element-id="368243">ses lignes (tr) ;</p></li><li id="r-368246" data-claire-element-id="368246"><p id="r-368245" data-claire-element-id="368245">ses cellules (td), voire ses cellules d'en-tête (th).</p></li></ul><pre id="r-368248" data-claire-element-id="368248"><code data-claire-semantic="html">&lt;table&gt;
+	&lt;caption&gt;Titre du tableau&lt;/caption&gt;
+	&lt;thead&gt;&lt;!-- en-tête --&gt;
+		&lt;tr&gt;&lt;!-- première ligne --&gt;
+			&lt;th&gt; Première cellule&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;&lt;!-- seconde ligne du tableau et première de tbody--&gt;
+			&lt;td&gt; Première cellule de la ligne&lt;/td&gt;
+		&lt;/tr&gt;	
+	&lt;/tbody&gt;
+	&lt;tfoot&gt;
+		&lt;tr&gt;&lt;!-- seconde ligne --&gt;
+			&lt;td&gt; Première cellule&lt;/td&gt;
+		&lt;/tr&gt;	
+	&lt;/tfoot&gt;
+&lt;/table&gt;</code></pre><h2 id="r-parcourir-votre-tableau" data-claire-element-id="368286">Parcourir votre tableau</h2><p id="r-368250" data-claire-element-id="368250">Cette partie est importante, car elle vous fera comprendre que JavaScript modélise les tableaux HTML en array. <br> De ce fait, la première ligne est la clé 0 de cet array, la seconde est la clé 1. Retenez bien cela, car sinon cela vous fournira systématiquement des erreurs.</p><aside id="r-368252" data-claire-element-id="368252" data-claire-semantic="information"><p id="r-368251" data-claire-element-id="368251">Plutôt que de parler de la clé 1 de l'array « tableau », on peut parler du numéro 1 de l'index, ou même de l'indice 1. J'utiliserai désormais le terme d'<strong>indice</strong>, donc retenez-le bien.</p></aside><p id="r-368253" data-claire-element-id="368253">Le tableau étant un array, il serait pratique d'appliquer les propriétés et méthodes des arrays.<br> Pour cela, on utilise la <strong>propriété rows</strong> (c'est une propriété, on ne mettra donc pas ()). Rows retourne un array contenant les lignes du tableau. Elle est applicable sur l'élément table, tbody, tfoot et thead.</p><h3 id="r-exemple-89" data-claire-element-id="368255">Exemple</h3><pre id="r-368254" data-claire-element-id="368254"><code data-claire-semantic="javascript">var arrayLignes = document.getElementById("monTableau").rows;</code></pre><h3 id="r-exercice-ndeg1" data-claire-element-id="368278">Exercice n°1</h3><p id="r-368256" data-claire-element-id="368256">0n va changer la couleur de fond du tableau. Une ligne aura un background de couleur claire (#bdcbf5), la suivante aura le sien de couleur plus foncée (#829eeb).<br> Ainsi, on devrait avoir quelque chose comme :</p><figure id="r-368258" data-claire-element-id="368259"><img id="r-368257" data-claire-element-id="368257" src="./Tutoriel _ Maîtriser les tableaux HTML avec JavaScript_files/uploads.siteduzero.com_files_210001_211000_210250.png" alt="Image utilisateur"></figure><p id="r-368260" data-claire-element-id="368260">Si vous avez besoin d'aide, voici l'algorithme :</p><ol id="r-368269" data-claire-element-id="368269"><li id="r-368262" data-claire-element-id="368262"><p id="r-368261" data-claire-element-id="368261">on stocke l'array des lignes dans une variable ;</p></li><li id="r-368264" data-claire-element-id="368264"><p id="r-368263" data-claire-element-id="368263">si la clé de la ligne est paire, alors le background de la ligne sera clair ;</p></li><li id="r-368266" data-claire-element-id="368266"><p id="r-368265" data-claire-element-id="368265">sinon, le background sera foncé ;</p></li><li id="r-368268" data-claire-element-id="368268"><p id="r-368267" data-claire-element-id="368267">on retourne en 2 si on n'a toujours pas fini de parcourir l'array.</p></li></ol><p id="r-368270" data-claire-element-id="368270"><em>Petite astuce :</em> pour savoir si un nombre est pair, vous faites <code data-claire-semantic="javascript">if(nombre % 2 == 0) </code> (% est le modulo, qui représente le reste de la division).</p><p id="r-368271" data-claire-element-id="368271">Vous avez trouvé ? Voici la réponse :</p><div id="r-368273" data-claire-element-id="368273"><pre id="r-368272" data-claire-element-id="368272"><code data-claire-semantic="javascript">var arrayLignes = document.getElementById("monTableau").rows; //l'array est stocké dans une variable
+var longueur = arrayLignes.length;//on peut donc appliquer la propriété length
+var i=0; //on définit un incrémenteur qui représentera la clé
+
+while(i&lt;longueur)
+{
+	if(i % 2 == 0)//si la clé est paire
+	{
+		arrayLignes[i].style.backgroundColor = "#bdcbf5";
+	}
+	else //elle est impaire
+	{
+		arrayLignes[i].style.backgroundColor = "#829eeb";
+	}
+	i++;
+}</code></pre></div><p id="r-368274" data-claire-element-id="368274">Pratique non ? :D</p><aside id="r-368276" data-claire-element-id="368276" data-claire-semantic="information"><p id="r-368275" data-claire-element-id="368275">Vous pouvez faire de même avec <strong>cells</strong> qui va donner le tableau des cellules d'une ligne. Lorsqu'une cellule s'étend sur plusieurs lignes, cette cellule ne comptera que pour la première ligne. Cells est applicable sur une ligne comme ceci :</p></aside><pre id="r-368277" data-claire-element-id="368277"><code data-claire-semantic="javascript">var arrayCellules = document.getElementById("maLigne").cells;</code></pre><h3 id="r-exercice-ndeg2" data-claire-element-id="368282">Exercice n°2</h3><p id="r-368279" data-claire-element-id="368279">Vous pouvez ainsi coloriser une colonne sur deux avec une couleur foncée et les autres avec une couleur claire. Pour cela, nous allons faire une boucle qui va appliquer le changement sur toutes les cellules de toutes les lignes du tableau. C'est-à-dire que nous allons faire une boucle dans une boucle.</p><pre id="r-368280" data-claire-element-id="368280"><code data-claire-semantic="javascript">var arrayLignes = document.getElementById("monTableau").rows; //on récupère les lignes du tableau
+var longueur = arrayLignes.length;//on peut donc appliquer la propriété length
+
+
+for(var i=0; i&lt;longueur; i++)//on peut directement définir la variable i dans la boucle
+{
+	var arrayColonnes = arrayLignes[i].cells;//on récupère les cellules de la ligne
+	var largeur = arrayColonnes.length;
+
+	for(var j=0; j&lt;largeur; j++)
+	{
+		if(j % 2 == 0)//si la clé est paire
+		{
+			arrayColonnes[j].style.backgroundColor = "#bdcbf5";
+		}
+		else //elle est impaire
+		{
+			arrayColonnes[j].style.backgroundColor = "#829eeb";
+		}
+	}
+}</code></pre><p id="r-368281" data-claire-element-id="368281">Maintenant, imaginez que vous vouliez afficher le numéro de la ligne sélectionnée.<br> Pour cela vous pourriez faire une boucle à nouveau, jusqu'à tomber sur la ligne sélectionnée, et ensuite afficher son numéro.<br> Ou... vous pouvez utiliser directement <strong>rowIndex</strong> qui vous indiquera le numéro dans l'array. Il faudra ensuite ajouter 1 au nombre renvoyé, car un array commence par 0.</p><h3 id="r-exemple-90" data-claire-element-id="368285">Exemple</h3><pre id="r-368283" data-claire-element-id="368283"><code data-claire-semantic="javascript">function numeroLigne(ligne)
+{
+	var numero = ligne.rowIndex;
+	ligne.cells[0].innerHTML = numero+1;
+}</code></pre><p id="r-368284" data-claire-element-id="368284">De même, il existe cellIndex qui va vous renseigner sur le numéro de la cellule dans la ligne.<br> Enfin, sachez également que sectionRowIndex donnera le numéro de la ligne par rapport à tbody, tfoot, et thead.</p>
+<aside class="aside-menu">
+<ul class="content-menu subchapter" role="navigation">
+<li class="tuto">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript">Maîtriser les tableaux HTML avec JavaScript</a>
+</li>
+<ul class="subchapter-parts">
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+Présentation
+</a>
+</li>
+<li class="active">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+Se déplacer dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+Ajouter du contenu dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+Supprimer du contenu
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/deplacer-du-contenu-1">
+Déplacer du contenu
+</a>
+</li>
+</ul>
+</ul>
+</aside>
+</div>
+<div id="content-bottom-menu"></div>
+<hr>
+<div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+<span class="arrow"></span>
+<span class="next">Présentation</span>
+</a>
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+<span class="next">Ajouter du contenu dans un tableau</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="bottom">
+<div class="clear"></div> <div class="adBan">
+<script type="text/javascript">
+    if (window.innerWidth >= 728)
+    {
+        document.write('<div id="div-gpt-ad-1350977194635-8" class="megaban"></div>');
+        googletag.cmd.push(function() {
+            googletag.display('div-gpt-ad-1350977194635-8');
+        });
+    }
+            else
+        {
+            document.write('<div id="div-gpt-ad-1350977284180-8" class="miniban"></div>');
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1350977284180-8');
+            });
+        }
+    </script><div id="div-gpt-ad-1350977194635-8" class="megaban"></div>
+</div>
+<div class="clear"></div><a name="Ajouterducontenudansuntableau"></a><h2>Ajouter du contenu dans un tableau</h2><div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+<span class="arrow"></span>
+<span class="next">Se déplacer dans un tableau</span>
+</a>
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+<span class="next">Supprimer du contenu</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="top">
+<div class="clear"></div> <div id="content" role="article">
+<p id="r-368288" data-claire-element-id="368288">Maintenant que nous avons compris comment JavaScript gère les tableaux HTML, nous pouvons aller encore un peu plus loin, et découvrir comment ajouter des lignes et des cellules dans un tableau. <br> Si vous vous sentez un peu perdu, je vous invite à retravailler les exemples et exercices.</p><h2 id="r-insertrow-index" data-claire-element-id="368295">insertRow([index])</h2><p id="r-368289" data-claire-element-id="368289">Cette méthode insère une ligne dans un tableau.<br> Comme vous le constatez, cette méthode utilise un argument facultatif. Il indique l'emplacement dans le tableau. Par défaut il vaut -1, c'est-à-dire à la fin du tableau. Cependant, une fois de plus, vous devez l'indiquer pour être compatible avec tous les navigateurs.</p><div id="r-368291" data-claire-element-id="368291" data-claire-semantic="question"><p id="r-368290" data-claire-element-id="368290">Attends... comment ça -1 ?!</p></div><p id="r-368292" data-claire-element-id="368292">En fait, si vous avez bien suivi la partie précédente, vous devez vous rappeler que la première ligne du tableau est une clé 0, la seconde ligne clé 1, etc.<br> Ainsi, la -1 est celle précédant la 0, c'est donc la dernière (oui, je dois reconnaître qu'une certaine logique m'échappe... :-° ). Pour autant, ne vous avisez pas d'écrire -2, ça n'existe pas !<br>InsertRow() est applicable sur table, tbody, tfoot, et thead.</p><pre id="r-368293" data-claire-element-id="368293"><code data-claire-semantic="javascript">var nouvelleLigne = document.getElementById("monBody").insertRow(-1);</code></pre><p id="r-368294" data-claire-element-id="368294">insertRow() vous retourne la ligne créée. À ce moment là, vous remplissez la ligne avec des insertCell... (belle transition non ? :lol: ).</p><h2 id="r-insertcell-index" data-claire-element-id="368338">insertCell([index])</h2><p id="r-368296" data-claire-element-id="368296">Son fonctionnement est quasi-identique à celui de insertRow(), sauf que cette fois-ci, on ajoute des cellules dans une ligne (et non pas dans un tableau, attention !). De plus, pour la remplir, vous pouvez utiliser la belle méthode insertData(decalage, string), mais qui n'est malheureusement pas compatible avec la plupart des navigateurs. On se contentera donc d'innerHTML.</p><h3 id="r-exemple-91" data-claire-element-id="368309">Exemple</h3><p id="r-368297" data-claire-element-id="368297">Imaginez que vous devez coder une plate-forme d'administration. Vous voulez réaliser un programme qui démarrera quand on clique sur un bouton. Ce programme va mettre dans un tableau les données (auteur, titre, jour, mois, année) de l'article. Dans ce tableau se trouvent aussi les données des articles précédents.<br> En gros, voici ce que nous allons demander à l'ordinateur via le JavaScript :</p><ul id="r-368304" data-claire-element-id="368304"><li id="r-368299" data-claire-element-id="368299"><p id="r-368298" data-claire-element-id="368298">récupère le titre et l'auteur des champs du formulaire, ainsi que la date d'aujourd'hui ;</p></li><li id="r-368301" data-claire-element-id="368301"><p id="r-368300" data-claire-element-id="368300">crée une nouvelle ligne dans le tableau ;</p></li><li id="r-368303" data-claire-element-id="368303"><p id="r-368302" data-claire-element-id="368302">crée des nouvelles colonnes dans le tableau et places-y les données correspondantes.</p></li></ul><pre id="r-368305" data-claire-element-id="368305"><code data-claire-semantic="html">&lt;form method="post" action=""&gt;
+	&lt;input type="text" name="titre" id="titre" /&gt;
+	&lt;input type="text" name="auteur" id="auteur" /&gt;
+
+	&lt;input type="button" onclick="ajouterLigne();" value="Enregistrer"/&gt;
+&lt;/form&gt;
+
+
+&lt;table id="tableau" border="1"&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;Titre&lt;/th&gt;
+			&lt;th&gt;Auteur&lt;/th&gt;
+			&lt;th&gt;Jour&lt;/th&gt;
+			&lt;th&gt;Mois&lt;/th&gt;
+			&lt;th&gt;Année&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Premier article&lt;/td&gt;
+			&lt;td&gt;Pierre-Louis&lt;/td&gt;
+			&lt;td&gt;02&lt;/td&gt;
+			&lt;td&gt;06&lt;/td&gt;
+			&lt;td&gt;2007&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Mise-à-jour du système&lt;/td&gt;
+			&lt;td&gt;Admin&lt;/td&gt;
+			&lt;td&gt;01&lt;/td&gt;
+			&lt;td&gt;01&lt;/td&gt;
+			&lt;td&gt;2010&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Le site dans le futur !&lt;/td&gt;
+			&lt;td&gt;MystèreX&lt;/td&gt;
+			&lt;td&gt;20&lt;/td&gt;
+			&lt;td&gt;12&lt;/td&gt;
+			&lt;td&gt;2012&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;</code></pre><p id="r-368306" data-claire-element-id="368306">Voici la solution commentée. Je l'ai fortement commentée pour vous aider à comprendre.</p><div id="r-368308" data-claire-element-id="368308"><pre id="r-368307" data-claire-element-id="368307"><code data-claire-semantic="javascript">function ajouterLigne()
+{
+	var tableau = document.getElementById("tableau");
+
+	var ligne = tableau.insertRow(-1);//on a ajouté une ligne
+
+	var colonne1 = ligne.insertCell(0);//on a une ajouté une cellule
+	colonne1.innerHTML += document.getElementById("titre").value;//on y met le contenu de titre
+
+	var colonne2 = ligne.insertCell(1);//on ajoute la seconde cellule
+	colonne2.innerHTML += document.getElementById("auteur").value;
+
+	var date = new Date();
+	var colonne3 = ligne.insertCell(2);
+	colonne3.innerHTML += date.getDate();//on ajoute le jour du mois
+
+	var colonne4 = ligne.insertCell(3);
+	colonne4.innerHTML += date.getMonth()+1;//les mois commencent par 0
+
+	var colonne5 = ligne.insertCell(4);
+	colonne5.innerHTML += date.getFullYear();
+}</code></pre></div><h3 id="r-exercice-ndeg3" data-claire-element-id="368337">Exercice n°3</h3><p id="r-368310" data-claire-element-id="368310">Eh bien maintenant, on peut encore aller un peu plus loin, et oui ! :diable: <br> Nous allons partir de la même situation. Sauf que maintenant, il faut insérer la ligne de sorte que les dates soient classées par ordre croissant. En effet, vous pouvez voir que la dernière ligne du tableau HTML a pour date 20/12/2012. Il faudrait donc que la ligne insérée arrive juste avant celle-ci. <br> Cependant... nous n'allons pas nous contenter de placer la ligne dans ce cas particulier (où on écrirait directement tableau.insertRow(2)), mais bien de manière générale ! :pirate:</p><p id="r-368311" data-claire-element-id="368311">Je trouve cet exercice plus difficile que les précédents, car il va utiliser toutes les connaissances acquises.<br> De ce fait, je vous donne l'algorithme. À vous de voir si vous en avez besoin.</p><div id="r-368327" data-claire-element-id="368327"><ol id="r-368326" data-claire-element-id="368326"><li id="r-368313" data-claire-element-id="368313"><p id="r-368312" data-claire-element-id="368312">On pose une variable qui contient l'ensemble des lignes.</p></li><li id="r-368315" data-claire-element-id="368315"><p id="r-368314" data-claire-element-id="368314">Une autre variable pour le jour, une autre encore pour le mois et une dernière pour l'année.</p></li><li id="r-368317" data-claire-element-id="368317"><p id="r-368316" data-claire-element-id="368316">On pose i=1, car la première ligne du tableau est occupée par le thead.</p></li><li id="r-368319" data-claire-element-id="368319"><p id="r-368318" data-claire-element-id="368318">Si la ligne du tableau qui a pour clé i a une année plus vieille que celle actuelle, on passe à la ligne suivante et on repart en 4.</p></li><li id="r-368321" data-claire-element-id="368321"><p id="r-368320" data-claire-element-id="368320">Sinon, si le mois est déjà passé, on passe à la ligne suivante et on repart en 4.</p></li><li id="r-368323" data-claire-element-id="368323"><p id="r-368322" data-claire-element-id="368322">Sinon si le jour est déjà passé ou qu'il est le même que celui d'aujourd'hui, on passe à la ligne suivante et on repart en 4.</p></li><li id="r-368325" data-claire-element-id="368325"><p id="r-368324" data-claire-element-id="368324">Sinon (la date est dans le futur), on arrête la boucle.</p></li></ol></div><p id="r-368328" data-claire-element-id="368328">Allez cherchez bien ! Vous n'y arriverez peut-être pas du premier coup (comme moi :-° ), mais cherchez l'erreur et résolvez-la, c'est ainsi que vous progresserez.</p><div id="r-368330" data-claire-element-id="368330"><pre id="r-368329" data-claire-element-id="368329"><code data-claire-semantic="javascript">function ajouterLigne()
+{
+	//on pose toutes les variables dont on aura besoin
+	var arrayLignes = document.getElementById("tableau").rows;
+	var date = new Date();
+	var jour = date.getDate();
+	var mois = date.getMonth()+1;
+	var annee = date.getFullYear();
+	var i=1;//car la première ligne correspond à thead
+	
+	while(1==1)//on fait une boucle infinie car la boucle s'arrêtera forcément avec le break
+	{
+		
+		if(arrayLignes[i].cells[4].innerHTML &lt; annee)//cells[4] désigne la cellule qui contient l'année
+		{
+			i++;
+			continue;//on recommence un tour de boucle
+		}
+		else if(arrayLignes[i].cells[3].innerHTML &lt; mois)//cells[3] le mois
+		{
+			i++;
+			continue;//on recommence un tour de boucle
+		}
+		else if(arrayLignes[i].cells[2].innerHTML &lt;= jour)//cells[2] le jour
+		{
+			i++;
+			continue;//on recommence un tour de boucle
+		}
+		else
+		{
+			break;
+		}
+	}
+	//i représente donc maintenant l'indice la ligne à insérer
+
+	var ligne = document.getElementById("tableau").insertRow(i);
+
+	var colonne1 = ligne.insertCell(0);//on a ajouté une cellule
+	colonne1.innerHTML += document.getElementById("titre").value;//on y met le contenu de titre
+
+	var colonne2 = ligne.insertCell(1);//on ajoute la seconde cellule
+	colonne2.innerHTML += document.getElementById("auteur").value;
+
+	var colonne3 = ligne.insertCell(2);
+	colonne3.innerHTML += date.getDate();//on ajoute le jour du mois
+
+	var colonne4 = ligne.insertCell(3);
+	colonne4.innerHTML += date.getMonth()+1;//les mois commencent par 0
+
+	var colonne5 = ligne.insertCell(4);
+	colonne5.innerHTML += date.getFullYear();
+}</code></pre></div><aside id="r-368332" data-claire-element-id="368332" data-claire-semantic="warning"><p id="r-368331" data-claire-element-id="368331">J'ai utilisé une boucle infinie car je savais bien que le else me permettrait de l'arrêter. Cependant, si vous n'êtes pas sûr de vous, vous pouvez toujours faire <code data-claire-semantic="javascript">while(i &lt; arrayLignes.length) </code> qui va vous assurer que le script finira par s'arrêter.</p></aside><p id="r-368333" data-claire-element-id="368333">Cette solution respecte bien l'algorithme. Néanmoins, vous pouvez faire un peu plus court.</p><div id="r-368335" data-claire-element-id="368335"><pre id="r-368334" data-claire-element-id="368334"><code data-claire-semantic="javascript">function ajouterLigne()
+{
+	var arrayLignes = document.getElementById("tableau").rows;
+	var date = new Date();
+	var jour = date.getDate();
+	var mois = date.getMonth()+1;
+	var annee = date.getFullYear();
+	var i=1;//car la première ligne correspond à thead
+
+	while(1==1)//on fait une boucle infinie car on arrête la boucle avec le break
+	{
+		if(arrayLignes[i].cells[4].innerHTML &gt;= annee &amp;&amp; arrayLignes[i].cells[3].innerHTML &gt;= mois &amp;&amp; arrayLignes[i].cells[2].innerHTML &gt; jour)
+		{//si la date est dans le futur
+		//l'inverse de &lt; est &gt;= et celui de &lt;= est &gt; ; faites bien attention à cela
+			break;
+		}
+		i++;
+	}
+	//i représente donc maintenant l'indice de la ligne à insérer
+
+	var ligne = document.getElementById("tableau").insertRow(i);
+	
+	ligne.insertCell(0).innerHTML += document.getElementById("titre").value;//on y met le contenu de titre
+	ligne.insertCell(1).innerHTML += document.getElementById("auteur").value;
+	ligne.insertCell(2).innerHTML += jour;//on ajoute le jour du mois
+	ligne.insertCell(3).innerHTML += mois;//les mois commencent par 0
+	ligne.insertCell(4).innerHTML += annee;
+}</code></pre></div><p id="r-368336" data-claire-element-id="368336">On peut certainement faire encore plus rapide, mais c'est déjà pas mal non ?</p>
+<aside class="aside-menu">
+<ul class="content-menu subchapter" role="navigation">
+<li class="tuto">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript">Maîtriser les tableaux HTML avec JavaScript</a>
+</li>
+<ul class="subchapter-parts">
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+Présentation
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+Se déplacer dans un tableau
+</a>
+</li>
+<li class="active">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+Ajouter du contenu dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+Supprimer du contenu
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/deplacer-du-contenu-1">
+Déplacer du contenu
+</a>
+</li>
+</ul>
+</ul>
+</aside>
+</div>
+<div id="content-bottom-menu"></div>
+<hr>
+<div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+<span class="arrow"></span>
+<span class="next">Se déplacer dans un tableau</span>
+</a>
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+<span class="next">Supprimer du contenu</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="bottom">
+<div class="clear"></div> <div class="adBan">
+<script type="text/javascript">
+    if (window.innerWidth >= 728)
+    {
+        document.write('<div id="div-gpt-ad-1350977194635-8" class="megaban"></div>');
+        googletag.cmd.push(function() {
+            googletag.display('div-gpt-ad-1350977194635-8');
+        });
+    }
+            else
+        {
+            document.write('<div id="div-gpt-ad-1350977284180-8" class="miniban"></div>');
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1350977284180-8');
+            });
+        }
+    </script><div id="div-gpt-ad-1350977194635-8" class="megaban"></div>
+</div>
+<div class="clear"></div><a name="Supprimerducontenu"></a><h2>Supprimer du contenu</h2><div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+<span class="arrow"></span>
+<span class="next">Ajouter du contenu dans un tableau</span>
+</a>
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/deplacer-du-contenu-1">
+<span class="next">Déplacer du contenu</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="top">
+<div class="clear"></div> <div id="content" role="article">
+<p id="r-368340" data-claire-element-id="368340">Voilà, nous savons faire pleins de choses désormais !<br> Mais... ce n'est rien par rapport à ce qu'il nous reste à découvrir. :D</p><p id="r-368341" data-claire-element-id="368341">Reprenons l'exemple de la partie précédente. Vous êtes donc toujours en train de travailler sur la plate-forme d'administration. Votre chef de projet explique alors que la plate-forme devra également donner la possibilité de supprimer les articles. Pour cela, une colonne du tableau est ajoutée et propose de supprimer l'article.<br> Sauf que le chef est un peu pointilleux et demande que cela soit fait en Ajax (si vous ne connaissez pas ce n'est pas grave, nous ne l'utiliserons pas, mais sachez que l'on utilise le plus souvent le DOM du JavaScript quand on utilise l'Ajax), afin d'éviter le rechargement de la page. Il nomme un premier développeur chargé de l'Ajax, et quant à vous, vous devez supprimer la ligne avec du JavaScript.</p><p id="r-368342" data-claire-element-id="368342">Pour cela, vous allez utiliser...</p><h2 id="r-deleterow-numindex" data-claire-element-id="368356">deleteRow([numIndex])</h2><p id="r-368343" data-claire-element-id="368343">Vous mettez en argument à la méthode deleteRow() l'indice du tableau.</p><aside id="r-368345" data-claire-element-id="368345" data-claire-semantic="warning"><p id="r-368344" data-claire-element-id="368344">Lorsque vous utilisez deleteRow(), l'index est remis à jour. C'est un détail important, que nous allons expliquer dans l'exercice suivant (encore un ! :diable: ).</p></aside><p id="r-368346" data-claire-element-id="368346">Si vous appliquez deleteRow() non pas sur le tableau tout entier, mais sur tbody, thead, ou tfoot, l'index ne tiendra compte que des clés de cette sous-structure, et non pas des clés de l'ensemble du tableau. Cela peut donc provoquer un décalage ! Faites attention à cela aussi !</p><pre id="r-368347" data-claire-element-id="368347"><code data-claire-semantic="javascript">tableau.deleteRow(-1);//supprime la dernière ligne du tableau.</code></pre><h3 id="r-exercice-ndeg4" data-claire-element-id="368355">Exercice n°4</h3><p id="r-368348" data-claire-element-id="368348">Vous allez devoir écrire le code que le chef de projet demande.</p><pre id="r-368349" data-claire-element-id="368349"><code data-claire-semantic="html">&lt;table id="tableau" border&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;Titre&lt;/th&gt;
+			&lt;th&gt;Auteur&lt;/th&gt;
+			&lt;th&gt;Jour&lt;/th&gt;
+			&lt;th&gt;Mois&lt;/th&gt;
+			&lt;th&gt;Année&lt;/th&gt;
+			&lt;th&gt;Supprimer&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Premier article&lt;/td&gt;
+			&lt;td&gt;Pierre-Louis&lt;/td&gt;
+			&lt;td&gt;02&lt;/td&gt;
+			&lt;td&gt;06&lt;/td&gt;
+			&lt;td&gt;2007&lt;/td&gt;
+			&lt;td onclick="supprimerLigne(this.parentNode.rowIndex);"&gt;X&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Mise-à-jour du système&lt;/td&gt;
+			&lt;td&gt;Admin&lt;/td&gt;
+			&lt;td&gt;01&lt;/td&gt;
+			&lt;td&gt;01&lt;/td&gt;
+			&lt;td&gt;2010&lt;/td&gt;
+			&lt;td onclick="supprimerLigne(this.parentNode.rowIndex);"&gt;X&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;Le site dans le futur !&lt;/td&gt;
+			&lt;td&gt;MystèreX&lt;/td&gt;
+			&lt;td&gt;20&lt;/td&gt;
+			&lt;td&gt;12&lt;/td&gt;
+			&lt;td&gt;2012&lt;/td&gt;
+			&lt;td onclick="supprimerLigne(this.parentNode.rowIndex);"&gt;X&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;</code></pre><p id="r-368350" data-claire-element-id="368350">Ainsi, vous devez coder la fonction supprimerLigne().<br> Regardez bien : j'ai mis <code data-claire-semantic="javascript">this.parentNode.rowIndex </code> en paramètre. J'aurais très bien pu mettre le numéro de la ligne directement, mais cela m'aurait au final fournit une erreur. En effet dans ce cas-là, j'aurais mis dans la dernière ligne <code data-claire-semantic="javascript">supprimerLigne("3"); </code> mais lorsqu'une ligne précédente est supprimée, l'index est remis à jour comme je vous l'ai dit. De ce fait, la ligne 3 <strong>n'existe plus</strong> ! <br> Peut-être que vous ne comprenez pas this.parentNode.rowIndex. Je vous le détaille.<br> On part de this, qui représente la cellule où on a cliqué. <br>parentNode nous amène dans l'élément HTML qui contient la cellule, c'est-à-dire la ligne. Cela peut vous paraître flou, et si vous voulez plus d'indications allez donc lire <a href="http://www.siteduzero.com/tutoriel-3-4564-dhtml-et-javascript.html">ce tutoriel</a>.<br> Enfin rowIndex que nous avons déjà vu nous renseigne sur le numéro de la ligne. Il est mis à jour lorsque l'index change.</p><p id="r-368351" data-claire-element-id="368351">Bon courage !</p><div id="r-368353" data-claire-element-id="368353"><pre id="r-368352" data-claire-element-id="368352"><code data-claire-semantic="javascript">function supprimerLigne(num)
+{
+	document.getElementById("tableau").deleteRow(num);
+}</code></pre></div><p id="r-368354" data-claire-element-id="368354">En fait écrire la fonction n'apporte pas grand-chose. On aurait pu écrire le code de suppression directement dans la cellule. Mais ainsi vous pourrez ajouter d'autres fonctionnalités à la fonction. Et puis ça me permet de ne pas vous donner la solution en même temps que l'énoncé... :-°</p><h2 id="r-d-autres-proprietes-de-suppression-moins-utiles" data-claire-element-id="368367">D'autres propriétés de suppression moins utiles...</h2><p id="r-368357" data-claire-element-id="368357">Ici je ne détaillerai que très rapidement les propriétés, car elles sont peu utilisées. En revanche si vous les croisez, vous pourrez les comprendre.</p><h3 id="r-deletecell-numindex" data-claire-element-id="368360">deleteCell([numIndex])</h3><p id="r-368358" data-claire-element-id="368358">Similaire à deleteRow(), mais supprime une cellule. Même si le standard met l'argument en facultatif, vous devez indiquer l'indice. deleteCell s'applique à une ligne.</p><pre id="r-368359" data-claire-element-id="368359"><code data-claire-semantic="javascript">var tableau = document.getElementById("monTableau");//on prend le tableau
+var ligne = tableau.rows[0];// on prend la première ligne
+ligne.deleteCell(0);//on supprime la première cellule de la première ligne</code></pre><h3 id="r-deletecaption" data-claire-element-id="368362">deleteCaption()</h3><p id="r-368361" data-claire-element-id="368361">Cette méthode supprime le caption (la légende du tableau). Dans le cas où il y a plusieurs captions, deleteCaption() ne supprime que le premier.</p><h3 id="r-deletetfoot" data-claire-element-id="368364">deleteTFoot()</h3><p id="r-368363" data-claire-element-id="368363">Vous utilisez deleteTFoot() pour supprimer le tfoot (le bas de tableau). Il faut donc l'utiliser avec attention, car l'action est bien évidemment sans retour. Cela peut être pratique par exemple quand vous indiquez le nom des colonnes également en thead (en-tête de tableau), mais que le nombre de lignes du tableau est trop petit pour que cela ait un intérêt ; ainsi vous supprimez le tfoot pour alléger le tableau. Chose assez étrange, on peut appliquer deleteTFoot() non seulement sur un tableau, mais aussi sur un tbody.</p><h3 id="r-deletethead" data-claire-element-id="368366">deleteTHead()</h3><p id="r-368365" data-claire-element-id="368365">Cette méthode fonctionne exactement comme deleteTFoot(), sauf que cette fois-ci c'est le thead (le haut de tableau) qui est supprimé.</p>
+<aside class="aside-menu">
+<ul class="content-menu subchapter" role="navigation">
+<li class="tuto">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript">Maîtriser les tableaux HTML avec JavaScript</a>
+</li>
+<ul class="subchapter-parts">
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+Présentation
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+Se déplacer dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+Ajouter du contenu dans un tableau
+</a>
+</li>
+<li class="active">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+Supprimer du contenu
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/deplacer-du-contenu-1">
+Déplacer du contenu
+</a>
+</li>
+</ul>
+</ul>
+</aside>
+</div>
+<div id="content-bottom-menu"></div>
+<hr>
+<div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+<span class="arrow"></span>
+<span class="next">Ajouter du contenu dans un tableau</span>
+</a>
+<a class="after" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/deplacer-du-contenu-1">
+<span class="next">Déplacer du contenu</span>
+<span class="arrow"></span>
+</a>
+</div>
+<hr class="bottom">
+<div class="clear"></div> <div class="adBan">
+<script type="text/javascript">
+    if (window.innerWidth >= 728)
+    {
+        document.write('<div id="div-gpt-ad-1350977194635-8" class="megaban"></div>');
+        googletag.cmd.push(function() {
+            googletag.display('div-gpt-ad-1350977194635-8');
+        });
+    }
+            else
+        {
+            document.write('<div id="div-gpt-ad-1350977284180-8" class="miniban"></div>');
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1350977284180-8');
+            });
+        }
+    </script><div id="div-gpt-ad-1350977194635-8" class="megaban"></div>
+</div>
+<div class="clear"></div><a name="Dplacerducontenu"></a><h2>Déplacer du contenu</h2><div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+<span class="arrow"></span>
+<span class="next">Supprimer du contenu</span>
+</a>
+</div>
+<hr class="top">
+<div class="clear"></div> <div id="content" role="article">
+<p id="r-368369" data-claire-element-id="368369">Nous avons vu comment ajouter ou supprimer du contenu, mais comment fait-on pour en déplacer ?<br> Vous avez peut-être déjà vu sur Internet des boutons servant à faire monter ou descendre une ligne d'un tableau. Comment fait-on cela ? Si on modifie une cellule, comment la classer dans le bon ordre par la suite ?</p><h2 id="r-deplacer-une-ligne" data-claire-element-id="368396">Déplacer une ligne</h2><p id="r-368370" data-claire-element-id="368370">Il existe une méthode déjà toute faite : c'est moveRow(source, cible). <br> Mais là je sens que je vais vous énerver prodigieusement, car cette méthode n'est pas standardisée et n'est valable que pour Internet Explorer. :colere2:</p><p id="r-368371" data-claire-element-id="368371">Nous allons donc écrire la fonction nous-mêmes. :magicien: <br> C'est votre cinquième exercice.</p><p id="r-368372" data-claire-element-id="368372">Comment va-t-on s'y prendre ?<br> À l'image de moveRow(), nous allons créer la fonction deplacerLigne().<br> Celle-ci va prendre deux arguments :</p><ul id="r-368377" data-claire-element-id="368377"><li id="r-368374" data-claire-element-id="368374"><p id="r-368373" data-claire-element-id="368373">la source qui indiquera l'indice de la ligne à déplacer ;</p></li><li id="r-368376" data-claire-element-id="368376"><p id="r-368375" data-claire-element-id="368375">la cible, qui indiquera son emplacement de destination.</p></li></ul><p id="r-368378" data-claire-element-id="368378">Pour déplacer, il va falloir mettre en mémoire la ligne, l'insérer autre part, puis la supprimer.<br> C'est parfait, ça reprend les trois parties précédentes !</p><p id="r-368379" data-claire-element-id="368379">Allez hop, au boulot !</p><p id="r-368380" data-claire-element-id="368380">Besoin d'aide ? Voici l'algorithme :</p><div id="r-368390" data-claire-element-id="368390"><ol id="r-368389" data-claire-element-id="368389"><li id="r-368382" data-claire-element-id="368382"><p id="r-368381" data-claire-element-id="368381">on stocke la ligne de la source dans la variable « ligne » ;</p></li><li id="r-368384" data-claire-element-id="368384"><p id="r-368383" data-claire-element-id="368383">on insère la nouvelle ligne à l'endroit de la cible qu'on appelle « nouvelle » ;</p></li><li id="r-368386" data-claire-element-id="368386"><p id="r-368385" data-claire-element-id="368385">tant qu'il y a des cellules dans « ligne », on crée des cellules dans « nouvelle » qui ont le même contenu que les cellules de « ligne » ;</p></li><li id="r-368388" data-claire-element-id="368388"><p id="r-368387" data-claire-element-id="368387">on supprime l'ancienne ligne.</p></li></ol></div><p id="r-368391" data-claire-element-id="368391">Faites bien attention lorsque vous supprimez l'ancienne ligne. En effet, son indice peut avoir été modifié si la ligne insérée se situe avant (n'oubliez pas la mise à jour de l'index du tableau !).</p><p id="r-368392" data-claire-element-id="368392">Vous avez trouvé ? Voici ma solution. Ce n'est pas forcément la meilleure mais elle devrait être simple à comprendre.</p><div id="r-368394" data-claire-element-id="368394"><pre id="r-368393" data-claire-element-id="368393"><code data-claire-semantic="javascript">function deplacerLigne(source, cible)
+{
+	//on initialise nos variables
+	var ligne = document.getElementById("tableau").rows[source];//on copie la ligne
+	var nouvelle = document.getElementById("tableau").insertRow(cible);//on insère la nouvelle ligne
+	var cellules = ligne.cells;
+
+	//on boucle pour pouvoir agir sur chaque cellule
+	for(var i=0; i&lt;cellules.length; i++)
+	{
+		nouvelle.insertCell(-1).innerHTML += cellules[i].innerHTML;//on copie chaque cellule de l'ancienne à la nouvelle ligne
+	}
+
+	//on supprimer l'ancienne ligne
+	document.getElementById("tableau").deleteRow(ligne.rowIndex);//on met ligne.rowIndex et non pas source car le numéro d'index a pu changer
+}</code></pre></div><p id="r-368395" data-claire-element-id="368395">Grâce à cette fonction, vous pouvez très facilement proposer de monter ou de descendre une ligne du tableau ! Il suffira d'écrire <code data-claire-semantic="javascript">deplacerLigne(this.parentNode.rowIndex, this.parentNode.rowIndex+1); </code> pour monter.</p><h2 id="r-deplacer-une-cellule" data-claire-element-id="368417">Déplacer une cellule</h2><p id="r-368397" data-claire-element-id="368397">De même que deplacerLigne(), nous allons écrire une fonction qui permet de déplacer une cellule.<br> Elle prendra 4 paramètres :</p><ul id="r-368402" data-claire-element-id="368402"><li id="r-368399" data-claire-element-id="368399"><p id="r-368398" data-claire-element-id="368398">ligne1 et cellule1 : l'indice de la ligne et de la première cellule ;</p></li><li id="r-368401" data-claire-element-id="368401"><p id="r-368400" data-claire-element-id="368400">ligne2 et cellule2 : idem pour l'autre cellule.</p></li></ul><p id="r-368403" data-claire-element-id="368403">En fait le code va récupérer les valeurs des cellules, puis les placer dans les autres cellules.</p><div id="r-368405" data-claire-element-id="368405"><pre id="r-368404" data-claire-element-id="368404"><code data-claire-semantic="javascript">function intervertirCellule(ligne1, cellule1, ligne2, cellule2)
+{
+	//on récupère les données 
+	var contenu1 = document.getElementById("tableau").rows[ligne1].cells[cellule1].innerHTML;//on copie le contenu de la cellule 1
+	var contenu2 = document.getElementById("tableau").rows[ligne2].cells[cellule2].innerHTML;//on copie celui de la cellule 2
+	
+	//on remplace
+	document.getElementById("tableau").rows[ligne1].cells[cellule1].innerHTML = contenu2;
+	document.getElementById("tableau").rows[ligne2].cells[cellule2].innerHTML = contenu1;//on intervertit les contenus
+}</code></pre></div><p id="r-368406" data-claire-element-id="368406">Vous avez appris un certain nombre de nouvelles notions. Cependant si vous avez toujours un peu de mal, je peux vous proposer des exercices plus ou moins durs où vous utiliserez ces notions :</p><ul id="r-368415" data-claire-element-id="368415"><li id="r-368408" data-claire-element-id="368408"><p id="r-368407" data-claire-element-id="368407">faites un tableau qui permet de déplacer, ajouter, ou supprimer une ligne ou une cellule ;</p></li><li id="r-368410" data-claire-element-id="368410"><p id="r-368409" data-claire-element-id="368409">ajoutez un bouton qui classe les lignes en fonction de la date, du titre, etc. ;</p></li><li id="r-368412" data-claire-element-id="368412"><p id="r-368411" data-claire-element-id="368411">ajoutez un bouton qui sélectionne les lignes dont la colonne date est située dans un intervalle de temps donné, les autres lignes seront supprimées ;</p></li><li id="r-368414" data-claire-element-id="368414"><p id="r-368413" data-claire-element-id="368413">si vos structures sont faites de tableaux HTML, dynamisez votre page.</p></li></ul><p id="r-368416" data-claire-element-id="368416">Si vous avez besoin d'aide, non pas pour vos codes mais pour la théorie, n'hésitez pas à m'envoyer un MP.</p>
+<aside class="aside-menu">
+<ul class="content-menu subchapter" role="navigation">
+<li class="tuto">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript">Maîtriser les tableaux HTML avec JavaScript</a>
+</li>
+<ul class="subchapter-parts">
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/presentation-77">
+Présentation
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/se-deplacer-dans-un-tableau">
+Se déplacer dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/ajouter-du-contenu-dans-un-tableau">
+Ajouter du contenu dans un tableau
+</a>
+</li>
+<li>
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+Supprimer du contenu
+</a>
+</li>
+<li class="active">
+<a href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/deplacer-du-contenu-1">
+Déplacer du contenu
+</a>
+</li>
+</ul>
+</ul>
+</aside>
+</div>
+<div id="content-bottom-menu"></div>
+<hr>
+<div class="paginate-tuto">
+<a class="before" href="https://pub.phyks.me/informatique/tutoriels/maitriser-les-tableaux-html-avec-javascript/supprimer-du-contenu">
+<span class="arrow"></span>
+<span class="next">Supprimer du contenu</span>
+</a>
+</div>
+<hr class="bottom">
+<div class="clear"></div> <div class="adBan">
+<script type="text/javascript">
+    if (window.innerWidth >= 728)
+    {
+        document.write('<div id="div-gpt-ad-1350977194635-8" class="megaban"></div>');
+        googletag.cmd.push(function() {
+            googletag.display('div-gpt-ad-1350977194635-8');
+        });
+    }
+            else
+        {
+            document.write('<div id="div-gpt-ad-1350977284180-8" class="miniban"></div>');
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1350977284180-8');
+            });
+        }
+    </script><div id="div-gpt-ad-1350977194635-8" class="megaban"></div>
+</div>
+<div class="clear"></div>
+</body></html>

@@ -1,0 +1,849 @@
+*{
+    list-style: none;
+    color: #3c3c3c;
+    text-decoration: none;
+    font-weight: 300;
+    line-height: 1;
+    
+    
+   
+}
+/*
+==========================header===========================
+*/
+
+header{
+    background-color: aliceblue;
+}
+.nav-bar .logo img{
+    width: 100px;
+    margin-left: 100px;
+    border: 10px solid #e7c014;
+    padding: 10px 10px;
+    border-radius: 30px;
+}
+.nav-bar{
+    display: flex;
+    
+}
+.nav-bar li{
+    display: flex;
+   margin-left: 500px;
+   margin-top: 30px;
+  
+}
+.nav-bar li ul a{
+    padding: 2px;
+    font-size: 1.35rem;
+}
+.nav-bar li ul :hover{
+    padding: 15px;
+    background-color: #e7c014;
+}
+
+/*===============head=slide+text-nav-bar================*/
+
+
+.head-bacgroung {
+    display: flex;
+    position: relative;
+}
+.welcom .text_1 h1{
+    margin-top: 80px;
+    margin-left: 700px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+}
+.welcom .text_1 h1 strong{
+    font-family: 'Dancing Script', cursive;
+    font-size: 7.5rem;
+    color: #e7c014;
+    text-decoration: #e7c014;
+}
+.welcom .text_1 p{
+    margin-left: 750px;
+    font-size: 2rem;
+    font-family: 'Merriweather', serif;
+}
+.welcom .text_1 p strong{
+    color: #e7c014;
+    font-size: 2.3rem;
+    text-decoration: #e7c014;
+    font-family: 'Merriweather', serif;
+
+}
+.welcom{
+    position: absolute;
+    
+}
+.welcom .text_1 a button{
+    margin-left: 850px;
+    background-color: #e7c014;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.3rem;
+    font-family: 'Merriweather', serif;
+}
+.welcom .text_1 a button :hover{
+    padding: 15px 35px;
+}
+
+
+@media (max-width:1000px) {
+    .head{
+        height:  400px;
+        opacity: 1;
+    }
+
+    .welcom h1{
+        margin-left: 550px;
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.5rem;
+    }
+    
+    
+    
+    .welcom .divider{
+        margin-left: 600px;
+    }
+   
+    
+}
+@media (max-width:600px){
+    .head{
+       display: block;
+        opacity: 1;
+        flex-direction: column;
+        
+    }
+  
+   
+    
+    .welcom h1{
+        font-family: 'Dancing Script', cursive;
+        font-size: 2.5rem;
+        display: inline;
+        margin-left: 2px;
+       
+    }
+    .welcom li{
+        display: block;
+    }
+}
+
+@media (max-width:600px){
+    .head{
+        height: auto;
+         opacity: 1;
+     }
+     
+     .head-bacgroung{
+       display: block;
+     }
+     
+     .welcom h1{
+         font-family: 'Dancing Script', cursive;
+         font-size: 2.5rem;
+         text-align: center;
+         margin-top: 200px;
+         
+     }
+     .welcom li{
+        display: block;
+       
+    }
+     
+     .welcom .divider{
+         margin-left: 50px;
+     }
+}
+@media (max-width:300px){
+    .head{
+        height: auto;
+         opacity: 1;
+     }
+     
+     .head-bacgroung{
+       display: block;
+     }
+     
+     .welcom h1{
+         font-family: 'Dancing Script', cursive;
+         font-size: 2.5rem;
+         margin-top: 200px;
+        }
+     
+     .welcom .divider{
+         margin-left: 2px;
+     }
+}
+
+/*===================slider================*/
+.slide{
+    height: 400px;
+    width: 600px;
+    animation: fondu 5s ease-in-out infinite both;
+    position: relative;
+    margin-top: 50px;
+   
+}
+@keyframes fondu{
+    0%{background-image: url("img/kisspng-indian-cuisine-mela-indian-restaurant-take-out-tax-wedding-birthday-and-event-catering-service-manage-5cc110e9473e73.4061047015561566492918.png");}
+    100%{background-image: url("img/kisspng-vegetarian-cuisine-asian-cuisine-restaurant-food-g-irish-pub-5b0ef9a47990e2.7069255415277080684979.png");}
+
+}
+
+
+/*=============================months specialty======================================*/
+
+
+.welc{
+    text-align: center;
+    display: block;
+    padding: 1px;
+    
+    margin-top: 200px;
+ 
+}
+.divider {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 2.5rem;
+    width: 250px;
+    
+}
+.welc h1{
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    font-size: 3rem;
+}
+
+
+/**********=======================speciality menu==========================================*/
+
+
+
+.container
+{
+    
+    width: 100%;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    margin-bottom: 100px;
+    margin-top: 30px;
+    
+    font-family: "Merriweather",serif;
+    transition: .3s ease-in-out;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-flow:row wrap;
+    flex-flow:row wrap;
+    justify-content: center;
+    
+}
+
+.container .card
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    
+}
+.card:hover{
+    opacity: 0.5;
+    background-color: #e7c014;
+}
+
+.container .card:nth-child(even){
+    flex-direction: column-reverse;
+}
+
+.container .card .imgbx
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: #000;
+}
+
+.container .card .imgbx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: transparent;
+}
+
+
+.container .card .content{
+position: relative;
+width: 200px;
+height: 200px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.container .card .content div{
+    padding: 0;
+    text-align: center;
+}
+
+
+@media (max-width:1000px) 
+{
+   .container
+     {
+        grid-template-columns: repeat(auto-fit,minmax(100%,1fr));
+        
+        
+    }
+    .container .card
+    {
+      flex-direction: row;
+      margin: 10px 0;
+
+    }
+
+    .container .card:nth-child(even)
+    {
+      flex-direction: row-reverse;
+
+    }
+    .container .card .imgbx,
+    .container .card .content 
+    {
+      width: 50%;
+    }
+}
+
+@media (max-width:600px) 
+{
+    .welc{
+        margin-top: 500px;
+    }
+    .container .card
+    {
+      flex-direction: column;
+      margin: 10px 0;
+
+    }
+    .container .card:nth-child(even)
+    {
+      flex-direction: column;
+
+    }
+    .container .card .imgbx,
+    .container .card .content 
+    {
+      width: 100%;
+    }
+    .container .card .content 
+    {
+        height: 200px;
+    }
+}
+
+@media (max-width:300px) 
+{
+    .container .card
+    {
+      flex-direction: column;
+      margin: 10px 0;
+
+    }
+    .container .card:nth-child(even)
+    {
+      flex-direction: column;
+
+    }
+    .container .card .imgbx,
+    .container .card .content 
+    {
+      width: 100%;
+    }
+    .container .card .content 
+    {
+        height: 200px;
+    }
+    
+    h2,p{
+        font-size: 8px;
+    }
+    .container .card 
+    {
+     padding: 10px; 
+     
+    }
+}
+
+
+/************************A BOUT*************************************/
+
+
+.grid{
+    display: flex;
+    margin-top: 100px;
+    width: 100%;
+    margin: 0 auto;
+    background: aliceblue;
+}
+
+.grid .about{
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.875rem;
+    display: block;
+    margin-left: 50px;
+    width: 45%;
+    
+}
+
+.imag2{
+    width: 600px;
+    float: right;
+}
+@media (max-width:600px) {
+    .grid{
+        display: block;
+        margin-top: 100px;
+        margin: 0 auto;
+        background: #ece9e9;
+        margin-bottom: 500px;
+    }
+    
+    .grid .about{
+        text-align: center;
+        font-weight: 300;
+        font-size: 1.875rem;
+        display: block;
+        
+       
+        
+    }
+    
+    .imag2{
+        
+        float: right;
+        background:#ece9e9;
+    }
+}
+@media (max-width:300px) {
+    .grid{
+        display: block;
+        background: #ece9e9;
+        margin-bottom: 500px;
+    }
+    
+    .grid .about{
+        text-align: center;
+        font-weight: 300;
+        font-size: 1.875rem;
+    }
+    
+    .about .divider{
+        width: 100%;
+    }
+    .grid .sign{
+        width: 50%;
+    }
+    
+    .imag2{
+        background:#ece9e9;
+        width: 100%;
+    }
+}
+
+
+
+
+/*********************MENU CART*************************************/
+
+
+.menu-cart{
+    margin-top: 50px;
+    display: grid;
+}
+
+.menu-cart h1{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3rem;
+    font-family: 'Merriweather', serif;
+}
+
+.menu-cart  ul a{
+    display: flex;
+    font-size: 1.2em;
+    height: 50px;
+    font-family: 'Merriweather', serif;
+    border: none;
+    padding: 12px;
+}
+.menu-title{
+    margin: 0 auto;
+}
+.menu-title ul{
+    display: flex;
+
+}
+@media (max-width:600px) {
+    .menu-cart{
+        margin-top: 100px;
+       
+    }
+    
+    .menu-cart h1{
+        margin-top: 50px;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 3rem;
+        font-family: 'Merriweather', serif;
+    }
+    
+    
+    .menu-cart  ul{
+        display: block;
+        font-size: 1.2em;
+        height: 50px;
+        font-family: 'Merriweather', serif;
+        border: none;
+    }
+     
+}
+
+/*==============================menu============================*/
+
+
+.menu{
+    display: flex;
+   margin-left: 200px;
+   
+}
+
+.menu-section{
+    display: block;
+    width: 50%;
+    text-align: left;
+    
+}
+.menu-section table tr td span{
+    text-transform: uppercase;
+}
+
+.menu-section td{
+    font-size: 1rem;
+    font-family: 'Merriweather', serif;
+   
+}
+.menu-section td span{
+    line-height: 2;
+}
+@media (max-width:1000px){
+    .menu{
+        display: flex;
+        margin-left: 2px;
+    }
+    
+    .menu-section{
+        display: block;
+        width: 50%;
+        text-align: left;
+        
+    }
+    .menu-section table tr td span{
+        text-transform: uppercase;
+    }
+    
+    .menu-section td{
+        font-size: 1rem;
+        font-family: 'Merriweather', serif;
+       
+    }
+    .menu-section td span{
+        line-height: 2;
+    }  
+}
+@media (max-width:600px) {
+    .menu{
+        display: block;
+        margin-left: 2px;
+    }
+    
+    .menu-section{
+        display: block;
+        width: 50%;
+        text-align: left;
+        
+    }
+    .menu-section table tr td span{
+        text-transform: uppercase;
+    }
+    
+    .menu-section td{
+        font-size: 1rem;
+        font-family: 'Merriweather', serif;
+       
+    }
+    .menu-section td span{
+        line-height: 2;
+    }
+}
+@media (max-width:300px) {
+    .menu{
+        display: block;
+        margin-left: 1px;
+        width: 100%;
+    }
+    
+    .menu-section{
+        display: block;
+        width: 25%;
+        text-align: left;
+        
+    }
+    .menu-section table tr td span{
+        text-transform: uppercase;
+        width: 25%;
+    }
+    
+    .menu-section td{
+        font-size: 0.6em;
+        font-family: 'Merriweather', serif;
+        width: 100%;
+       
+    }
+    .menu-section td span{
+        line-height: 2;
+    }
+}
+/*================float icons=====================*/
+
+ 
+
+/*==================FOOTER======================*/
+/*======================CONTACT==================*/
+.footer-footer{
+    background: #ece9e9 transparent;
+}
+
+
+footer{
+    background: url(img/Green-Food-PNG-Free-Download.png);
+}
+
+.contact h1{
+    margin-left: 400px;
+    font-weight: bolder;
+    font-size: 3rem;
+    font-family: 'Merriweather', serif;
+    margin-top: 100px;
+}
+.contact .divider{
+    margin-left: 360px;
+}
+
+.contact{
+    display: block;
+    
+}
+.contact .contact-img{
+    position: absolute;
+    width: 1340px;
+}
+.contact .contact-1{
+    position: relative;
+    margin-left: 300px;
+}
+.contact .contact-1 h2{
+    font-size: 2em;
+    font-family: 'Merriweather', serif; 
+}
+.contact .contact-1 p{
+    font-family: 'Merriweather', serif;
+}
+.contact .content-contact{
+    display: flex;
+    position: relative;
+}
+/**===================FORM=============*/
+
+.contact-form{
+    display: block;
+    flex-flow: row wrap;
+    text-align: left;
+    margin-left: 300px;
+}
+.contact-form h2{
+    font-size: 2em;
+    font-family: 'Merriweather', serif; 
+}
+
+ input{
+    margin-bottom: 3.125rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #3c3c3c;
+    font-family: 'Merriweather', serif;
+    color: #3c3c3c;
+    padding-right: 50px;
+    width: 250px;
+    font-size: 1em;
+    text-shadow: none;
+    cursor: text;
+    text-transform: none;
+    outline: none;
+    
+}
+textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #3c3c3c;
+    width: 600px;
+    color: #3c3c3c;
+    font-size: 1em;
+    font-weight: 300;
+    cursor: text;
+    font-family: 'Merriweather', serif;
+    outline: none;
+
+}
+
+fieldset{
+    border: none;
+    
+}
+
+.contact-form form .send{
+    margin-left: 300px;
+    z-index: 1;
+    cursor: pointer;
+    margin-top: 50px;
+    font-family: 'Merriweather', serif;
+    font-size: 1.5em;
+    padding: 10px;  
+    background: #e9bc28; 
+    border: none;
+}
+
+
+
+/*================icon-social======================*/
+.social-icon{
+    display: flex;
+    margin-left: 200px;
+    margin-top: 50px;
+   
+}
+
+.social-icon img{
+    width: 50px;
+    padding: 2px;
+}
+
+.social-icon button{
+    margin: 5px;
+    cursor: pointer;
+    background: #e9bc28;
+    border: none;
+}
+
+.copy-info{
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-size: 1em;
+    color: #3c3c3c;
+    background: #e9bc28;
+    height: 50px;
+    padding: 2px;
+    
+}
+@media (max-width:600px) {
+    footer{
+        background: none;
+    }
+    .contact h1{
+        margin-left: 150px;
+        font-weight: bolder;
+        font-size: 3rem;
+        font-family: 'Merriweather', serif;
+        margin-top: 100px;
+    }
+    .contact .divider{
+        margin-left: 110px;
+    }
+    .contact .contact-1{
+       
+        margin-left: 20px;
+    }
+    .contact .contact-1 h2{
+        font-size: 2em;
+        font-family: 'Merriweather', serif; 
+    }
+   
+    .contact .content-contact{
+        display: flex;
+        position: relative;
+    } 
+    .contact-form{
+        display: block;
+        flex-flow: row wrap;
+        text-align: left;
+        margin-left: 2px;
+    }
+    .contact-form h2{
+        margin-left: 150px;
+        margin-top: 50px;
+    }
+    input{
+        width: 50%;
+    }
+    textarea {
+        width: 100%;
+    }
+    .contact-form form .send{
+        margin-left: 150px;
+    }
+    .social-icon{
+        display: flex;
+        margin-left: 50px;
+        margin-top: 50px;
+       
+    }
+    
+    
+}
+@media (max-width:300px) {
+    .contact h1{
+        margin-left: 45px;
+    }
+    .contact .divider{
+        margin-left: 1px;
+    }
+    .contact .contact-1{
+       
+        margin-left: 20px;
+    }
+    .contact .content-contact{
+        display: block;
+        
+    } 
+    .contact-form{
+       
+        margin-left: 2px;
+    }
+    .contact-form h2{
+        margin-left: 45px;
+        margin-top: 50px;
+    }
+    .contact-form form .send{
+        margin-left: 100px;
+    }
+    .social-icon{
+        display: flex;
+        margin-left: 50px;
+        margin-top: 50px;
+       padding: 10px;
+    }
+}
